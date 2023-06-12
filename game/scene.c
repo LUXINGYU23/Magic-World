@@ -1,22 +1,22 @@
 #include"scene.h"
-/*»æÖÆ±êÌâ½çÃæ*/ 
+/*ç»˜åˆ¶æ ‡é¢˜ç•Œé¢*/ 
 void DrawInitialSurface() 
 {   
     
     draw_bmp("picture/titlepicture.bmp",0,0,17,15);
     draw_bmp("picture/magicmaze.bmp",1,3,15,2);
     buttonList[1] = CreateImageButton("picture/startword.bmp", 6, 8, 5, 1, 1); 
-    buttonList[2] = CreateImageButton("picture/setting.bmp", 16, 0, 1, 1, 2); //»æÖÆÔİÍ£°´Å¥ 
-    scene=1;//±êÌâ½çÃæ 
+    buttonList[2] = CreateImageButton("picture/setting.bmp", 16, 0, 1, 1, 2); //ç»˜åˆ¶æš‚åœæŒ‰é’® 
+    scene=1;//æ ‡é¢˜ç•Œé¢ 
 
 }
-/*»æÖÆNPC½çÃæ*/ 
+/*ç»˜åˆ¶NPCç•Œé¢*/ 
 void DrawNPCSurface()
 {
 	draw_bmp("picture/start.bmp",0,0,17,15);
 	draw_bmp("picture/npc.bmp",8.5,6,1,1);
-	draw_bmp("picture/npc2.bmp",4,2,1,1) ;//»æÖÆ²Êµ°npc  
-	scene=2;//npc½çÃæ 
+	draw_bmp("picture/npc2.bmp",4,2,1,1) ;//ç»˜åˆ¶å½©è›‹npc  
+	scene=2;//npcç•Œé¢ 
 	maze->player.position.x=8.5;
     maze->player.position.y=12;
 	if(direction==1){
@@ -33,15 +33,15 @@ void DrawNPCSurface()
     }
 } 
 
-/*»æÖÆÑ¡Ôñ´´½¨»òÕß¼ÓÔØµØÍ¼½çÃæ*/ 
+/*ç»˜åˆ¶é€‰æ‹©åˆ›å»ºæˆ–è€…åŠ è½½åœ°å›¾ç•Œé¢*/ 
 void randomOrManualChoose(){
 	draw_bmp("picture/background3.bmp",0,0,17,15);
 	buttonList[51] = CreateImageButton("picture/random.bmp",3,4,5,5,51);
 	buttonList[52] = CreateImageButton("picture/manual.bmp",9,4,5,5,52);
-	draw_bmp("picture/Ëæ»úÉú³É×ÖÌå.bmp",3,10,5,3);
-	draw_bmp("picture/ÊÖ¶¯±à¼­×ÖÌå.bmp",9,10,5,3);
+	draw_bmp("picture/éšæœºç”Ÿæˆå­—ä½“.bmp",3,10,5,3);
+	draw_bmp("picture/æ‰‹åŠ¨ç¼–è¾‘å­—ä½“.bmp",9,10,5,3);
 }
-/*»æÖÆÑ¡ÔñÄÑ¶È½çÃæ*/ 
+/*ç»˜åˆ¶é€‰æ‹©éš¾åº¦ç•Œé¢*/ 
 void DrawPickmodeSurface()
 {
 	scene=3; 
@@ -53,27 +53,29 @@ void DrawPickmodeSurface()
 	buttonList[12] = CreateImageButton("picture/confirm.bmp", 9.5, 12, 5, 1.5, 12);
 } 
 
-/*»æÖÆÊÖ¶¯±à¼­µØÍ¼½çÃæ*/ 
+/*ç»˜åˆ¶æ‰‹åŠ¨ç¼–è¾‘åœ°å›¾ç•Œé¢*/ 
 void draw_scene_edit_maze(){
-    scene=5;//±à¼­µØÍ¼½çÃæ 
+    scene=5;//ç¼–è¾‘åœ°å›¾ç•Œé¢ 
 	draw_bmp("picture/background.bmp",0,0,17,15);
 	draw_bmp("picture/background2.bmp",0,0,11.5,11.5);	
-	buttonList[20] = CreateImageButton("picture/check.bmp",14.5,7,1,1,20); //»æÖÆÈ·¶¨°´Å¥  £¨È·ÈÏ£¬´«ÈëĞŞ¸Ä²ÎÊı£¬·µ»Øµ½µ±Ç°½çÃæ£© 
-	buttonList[21] = CreateImageButton("picture/startbutton.bmp",5,12,7,3,21); //»æÖÆ¿ªÊ¼°´Å¥ £¨½øÈëÃÔ¹¬µØÍ¼£©  
-	buttonList[23] = CreateImageButton("picture/save.bmp",14.5,5,1,1,23);//»æÖÆ±£´æ°´Å¥ 
-	draw_bmp("picture/µÚ.bmp",11.5,4,1,1);
-	draw_bmp("picture/µÚ.bmp",11.5,6,1,1);
-	draw_bmp("picture/ĞĞ.bmp",13.5,4,1,1);
-	draw_bmp("picture/ÁĞ.bmp",13.5,6,1,1);
-	draw_bmp("picture/ËµÃ÷.bmp",12.5,9,4,4);
-	textboxList[1]=CreateTextBox(12.5,4,1,1,91); //»æÖÆXÖá×ø±êÊäÈëÎÄ±¾¿ò 
-	textboxList[2]=CreateTextBox(12.5,6,1,1,92); //»æÖÆYÖá×ø±êÊäÈëÎÄ±¾¿ò 
-	textboxList[3]=CreateTextBox(12.5,8,1,1,93); //»æÖÆÌæ»»ÔªËØÎÄ±¾¿ò 
+	buttonList[20] = CreateImageButton("picture/check.bmp",14.5,7,1,1,20); //ç»˜åˆ¶ç¡®å®šæŒ‰é’®  ï¼ˆç¡®è®¤ï¼Œä¼ å…¥ä¿®æ”¹å‚æ•°ï¼Œè¿”å›åˆ°å½“å‰ç•Œé¢ï¼‰ 
+	buttonList[21] = CreateImageButton("picture/startbutton.bmp",5,12,7,3,21); //ç»˜åˆ¶å¼€å§‹æŒ‰é’® ï¼ˆè¿›å…¥è¿·å®«åœ°å›¾ï¼‰  
+	buttonList[23] = CreateImageButton("picture/save.bmp",14.5,5,1,1,23);//ç»˜åˆ¶ä¿å­˜æŒ‰é’® 
+	draw_bmp("picture/savemaze.bmp",14.5,4,1,1);
+	draw_bmp("picture/confirmedit.bmp",14.5,6.5,1,0.5);
+	draw_bmp("picture/ç¬¬.bmp",11.5,4,1,1);
+	draw_bmp("picture/ç¬¬.bmp",11.5,6,1,1);
+	draw_bmp("picture/è¡Œ.bmp",13.5,4,1,1);
+	draw_bmp("picture/åˆ—.bmp",13.5,6,1,1);
+	draw_bmp("picture/è¯´æ˜.bmp",12.5,9,4,4);
+	textboxList[1]=CreateTextBox(12.5,4,1,1,91); //ç»˜åˆ¶Xè½´åæ ‡è¾“å…¥æ–‡æœ¬æ¡† 
+	textboxList[2]=CreateTextBox(12.5,6,1,1,92); //ç»˜åˆ¶Yè½´åæ ‡è¾“å…¥æ–‡æœ¬æ¡† 
+	textboxList[3]=CreateTextBox(12.5,8,1,1,93); //ç»˜åˆ¶æ›¿æ¢å…ƒç´ æ–‡æœ¬æ¡† 
 	draw_maze(maze,1.0,1.0,9.0,9.0);	
 }
-/*»æÖÆÃÔ¹¬ÓÎÏ·³¡¾°½çÃæ*/ 
+/*ç»˜åˆ¶è¿·å®«æ¸¸æˆåœºæ™¯ç•Œé¢*/ 
 void draw_scene_mazegame(){
-	scene=6;//ÃÔ¹¬µØÍ¼ÓÎÏ·½çÃæ 
+	scene=6;//è¿·å®«åœ°å›¾æ¸¸æˆç•Œé¢ 
     draw_bmp("picture/background.bmp",0,0,17,15);
     draw_bmp("picture/rock.bmp",15.0,4.0,1,1);
     draw_bmp("picture/rock4.bmp",16.0,4.0,0.75,1.5);
@@ -109,9 +111,9 @@ void draw_scene_mazegame(){
     draw_wealth(maze->player.wealth);
 } 
 
-/*»æÖÆÊä³öÌáÊ¾×´Ì¬ÏÂÃÔ¹¬ÓÎÏ·³¡¾°½çÃæ*/ 
+/*ç»˜åˆ¶è¾“å‡ºæç¤ºçŠ¶æ€ä¸‹è¿·å®«æ¸¸æˆåœºæ™¯ç•Œé¢*/ 
 void draw_scene_mazegame_with_path(Solution *solution){
-	scene=6;//ÃÔ¹¬µØÍ¼ÓÎÏ·½çÃæ 
+	scene=6;//è¿·å®«åœ°å›¾æ¸¸æˆç•Œé¢ 
     draw_bmp("picture/background.bmp",0,0,17,15);
     draw_bmp("picture/rock.bmp",15.0,4.0,1,1);
     draw_bmp("picture/rock4.bmp",16.0,4.0,0.75,1.5);
@@ -145,11 +147,11 @@ void draw_scene_mazegame_with_path(Solution *solution){
 	draw_life(maze->player.life);
     draw_keys(maze->player.keys);
     draw_wealth(maze->player.wealth);
-    freeSolution(solution);//ÊÍ·Åsolution 
+    freeSolution(solution);//é‡Šæ”¾solution 
 }
-/*»æÖÆÊä³öÌáÊ¾ÏÂÒ»²½×´Ì¬ÏÂÃÔ¹¬ÓÎÏ·³¡¾°½çÃæ*/ 
+/*ç»˜åˆ¶è¾“å‡ºæç¤ºä¸‹ä¸€æ­¥çŠ¶æ€ä¸‹è¿·å®«æ¸¸æˆåœºæ™¯ç•Œé¢*/ 
 void draw_scene_mazegame_with_next_path(Solution *solution){
-	scene=6;//ÃÔ¹¬µØÍ¼ÓÎÏ·½çÃæ 
+	scene=6;//è¿·å®«åœ°å›¾æ¸¸æˆç•Œé¢ 
     draw_bmp("picture/background.bmp",0,0,17,15);
     draw_bmp("picture/rock.bmp",15.0,4.0,1,1);
     draw_bmp("picture/rock4.bmp",16.0,4.0,0.75,1.5);
@@ -183,13 +185,13 @@ void draw_scene_mazegame_with_next_path(Solution *solution){
 	draw_life(maze->player.life);
     draw_keys(maze->player.keys);
     draw_wealth(maze->player.wealth);
-    freeSolution(solution);//ÊÍ·Åsolution 
+    freeSolution(solution);//é‡Šæ”¾solution 
 }
 
 
-/*³ÌĞòÇó½â×´Ì¬ÏÂÃÔ¹¬ÓÎÏ·³¡¾°½çÃæ*/ 
+/*ç¨‹åºæ±‚è§£çŠ¶æ€ä¸‹è¿·å®«æ¸¸æˆåœºæ™¯ç•Œé¢*/ 
 void draw_scene_mazegame_with_auto_path(Solution *solution){
-	scene=9;//ÃÔ¹¬µØÍ¼ÓÎÏ·½çÃæ 
+	scene=9;//è¿·å®«åœ°å›¾æ¸¸æˆç•Œé¢ 
     draw_bmp("picture/background.bmp",0,0,17,15);
     draw_bmp("picture/rock.bmp",15.0,4.0,1,1);
     draw_bmp("picture/rock4.bmp",16.0,4.0,0.75,1.5);
@@ -223,15 +225,15 @@ void draw_scene_mazegame_with_auto_path(Solution *solution){
 	draw_life(maze->player.life);
     draw_keys(maze->player.keys);
     draw_wealth(maze->player.wealth);
-    freeSolution(solution);//ÊÍ·Åsolution 
+    freeSolution(solution);//é‡Šæ”¾solution 
     
 }
-/*»æÖÆ²Êµ°½çÃæ*/ 
+/*ç»˜åˆ¶å½©è›‹ç•Œé¢*/ 
 void draw_scene_game_egg(){
-	scene=8;//²Êµ°½çÃæ 
-//	buttonList[2] = CreateImageButton("picture/setting.bmp", 16, 0, 1, 1, 2); //»æÖÆÔİÍ£°´Å¥ 
+	scene=8;//å½©è›‹ç•Œé¢ 
+//	buttonList[2] = CreateImageButton("picture/setting.bmp", 16, 0, 1, 1, 2); //ç»˜åˆ¶æš‚åœæŒ‰é’® 
 	draw_bmp("picture/start.bmp",0,0,17,15);
-	draw_bmp("picture/egg.bmp",8.5,6,1,2);//»æÖÆ²Êµ°npc 
+	draw_bmp("picture/egg.bmp",8.5,6,1,2);//ç»˜åˆ¶å½©è›‹npc 
     draw_bmp("picture/talk.bmp",7.5,5,1,1);
 	maze->player.position.x=8.5;
     maze->player.position.y=12;
@@ -255,20 +257,20 @@ void draw_scene_about_developers(){
 	
 } 
 
-/*»æÖÆÊ¤Àû½çÃæ*/ 
+/*ç»˜åˆ¶èƒœåˆ©ç•Œé¢*/ 
 void DrawVictory(){
 	draw_bmp("picture/background5.bmp",0,0,17,15);
 	draw_bmp("picture/victory.bmp",1.5,4,14,3);
-	buttonList[13] = CreateImageButton("picture/back.bmp", 7.5,13 , 2, 2, 13); //»æÖÆ·µ»Ø°´Å¥ 
+	buttonList[13] = CreateImageButton("picture/back.bmp", 7.5,13 , 2, 2, 13); //ç»˜åˆ¶è¿”å›æŒ‰é’® 
 }
-/*»æÖÆÊ§°Ü½çÃæ*/ 
+/*ç»˜åˆ¶å¤±è´¥ç•Œé¢*/ 
 void DrawDefeat(){
 	draw_bmp("picture/background5.bmp",0,0,17,15);
 	draw_bmp("picture/defeat.bmp",1.5,4,14,3);
-	buttonList[13] = CreateImageButton("picture/back.bmp", 7.5,13 , 2, 2, 13); //»æÖÆ·µ»Ø°´Å¥ 
+	buttonList[13] = CreateImageButton("picture/back.bmp", 7.5,13 , 2, 2, 13); //ç»˜åˆ¶è¿”å›æŒ‰é’® 
 }
 
-/*»æÖÆÍæ¼ÒÉúÃüÖµ*/ 
+/*ç»˜åˆ¶ç©å®¶ç”Ÿå‘½å€¼*/ 
 void draw_life(int life){
 	double cell_width =0.55;
     double cell_height = 0.55 ;
@@ -278,7 +280,7 @@ void draw_life(int life){
 	} 
     
 }
-/*»æÖÆÍæ¼ÒÔ¿³×Êı*/ 
+/*ç»˜åˆ¶ç©å®¶é’¥åŒ™æ•°*/ 
 void draw_keys(int key){
 	double cell_width =0.55;
     double cell_height = 0.55 ;
@@ -289,7 +291,7 @@ void draw_keys(int key){
 	
 }
 
-/*»æÖÆÍæ¼Ò²Æ¸»Öµ*/ 
+/*ç»˜åˆ¶ç©å®¶è´¢å¯Œå€¼*/ 
 void draw_wealth(int wealth){
 	double cell_width =0.55;
     double cell_height = 0.55 ;
@@ -300,7 +302,7 @@ void draw_wealth(int wealth){
 	
 }
 
-/*Éè¶¨Íæ¼Ò×´Ì¬º¯Êı*/ 
+/*è®¾å®šç©å®¶çŠ¶æ€å‡½æ•°*/ 
 void set_player(int key,int life ) {
 	maze->player.life=life;
 	maze->player.keys=key;
