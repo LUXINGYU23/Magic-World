@@ -1,15 +1,4 @@
-/*
-ĞŞÕıËµÃ÷
-¶¨ÒåÁËÈ«¾Ö±äÁ¿ 
-extern int buttonChoice;
-extern HWND buttonList[MAX_BUTTONS];
-ÊµÏÖÁËÌùÍ¼º¯Êı   draw_bmp(const char* bmp_path, double x, double y, double width, double height) ;
-ÊµÏÖÁË×Ô¶¨Òå°´Å¥º¯ÊıCreateImageButton(LPCSTR filePath, double xPosInch, double yPosInch, double widthInch, double heightInch, int buttonId)£»
-ÊµÏÖÁË°´Å¥É¾³ıº¯Êı   DestroyButton(HWND buttonHandle); 
-ÊµÏÖÁË½»»¥ÎÄ±¾¿òÉú³Éº¯Êı CreateTextBox(double xPosInch, double yPosInch, double widthInch, double heightInch, int textBoxId)
-ÊµÏÖÁË½»»¥ÎÄ±¾¿òÉ¾³ıº¯Êı DestroyTextBox(HWND hwndTextBox);
-ÄÚÇ¶°´Å¥ÒÔ¼°³¡¾°×ª»¯Âß¼­µ½ GraphicsEventProchº¯Êı 
-*/
+
  
 
 
@@ -1096,9 +1085,9 @@ static LONG FAR PASCAL GraphicsEventProc(HWND hwnd, UINT msg,
             switch (wmId)
             {
                 case 1:
-                    DisplayClear();//Ïú»Ù ÇåÆÁ
-					ButtonChoice=1;//¿ÉÒÆ¶¯ÈËÎï 
-                    scene=2;//scene2Îªnpc½çÃæ£¬scene6ÎªÃÔ¹¬½çÃæ 
+                    DisplayClear();//é”€æ¯ æ¸…å±
+					ButtonChoice=1;//å¯ç§»åŠ¨äººç‰© 
+                    scene=2;//scene2ä¸ºnpcç•Œé¢ï¼Œscene6ä¸ºè¿·å®«ç•Œé¢ 
                     DestroyButton(buttonList[1]);
                     DisplayClear();
                     DrawNPCSurface(); 
@@ -1107,7 +1096,7 @@ static LONG FAR PASCAL GraphicsEventProc(HWND hwnd, UINT msg,
                 	ButtonChoice=2;
                 	DestroyButton(buttonList[2]);
                 	DisplayClear();
-                	if(inmenu==1||inmenu==2){//ÔÚ²Ëµ¥ÖĞµÄÈÎÒ»¹¦ÄÜÖĞ
+                	if(inmenu==1||inmenu==2){//åœ¨èœå•ä¸­çš„ä»»ä¸€åŠŸèƒ½ä¸­
                 		DestroyButton(buttonList[2]);
                 		if(inmenu==2){
                 			DestroyButton(buttonList[24]);
@@ -1129,7 +1118,7 @@ static LONG FAR PASCAL GraphicsEventProc(HWND hwnd, UINT msg,
                 			case 2:
                 				draw_bmp("picture/start.bmp",0,0,17,15);
 	                			draw_bmp("picture/npc.bmp",8.5,6,1,1);
-	                			draw_bmp("picture/npc2.bmp",4,2,1,1) ;//»æÖÆ²Êµ°npc
+	                			draw_bmp("picture/npc2.bmp",4,2,1,1) ;//ç»˜åˆ¶å½©è›‹npc
 	                			draw_bmp("picture/player1.bmp",maze->player.position.x, maze->player.position.y, 1, 1);
 	                			draw_bmp("picture/truemenu.bmp",6.25,2.5,4.5,10); 
                 				buttonList[3] = CreateImageButton("picture/startbutton.bmp", 7.05, 3.75, 3, 1.3, 3); 
@@ -1183,7 +1172,7 @@ static LONG FAR PASCAL GraphicsEventProc(HWND hwnd, UINT msg,
                 		
 					}
 					
-                	else if(scene==1){//±êÌâ½çÃæ 
+                	else if(scene==1){//æ ‡é¢˜ç•Œé¢ 
                 	DestroyButton(buttonList[1]);
                     draw_bmp("picture/titlepicture.bmp",0,0,17,15);
                     draw_bmp("picture/magicmaze.bmp",1,3,15,2);
@@ -1194,7 +1183,7 @@ static LONG FAR PASCAL GraphicsEventProc(HWND hwnd, UINT msg,
                 	buttonList[6] = CreateImageButton("picture/story.bmp", 7.05, 8.25, 3, 1.3, 6);
                 	buttonList[7] = CreateImageButton("picture/exitbutton.bmp", 7.05, 9.75, 3, 1.3, 7);
 					}
-					else if(scene==6) {//ÃÔ¹¬½çÃæ 
+					else if(scene==6) {//è¿·å®«ç•Œé¢ 
 					DestroyButton(buttonList[80]);
                     draw_bmp("picture/background.bmp",0,0,17,15);
                     draw_bmp("picture/rock.bmp",15.0,4.0,1,1);
@@ -1238,11 +1227,11 @@ static LONG FAR PASCAL GraphicsEventProc(HWND hwnd, UINT msg,
 
                 	
                     }
-                    else if(scene==2){//npc½çÃæ 
+                    else if(scene==2){//npcç•Œé¢ 
               		
 	                draw_bmp("picture/start.bmp",0,0,17,15);
 					draw_bmp("picture/npc.bmp",8.5,6,1,1);
-					draw_bmp("picture/npc2.bmp",4,2,1,1) ;//»æÖÆ²Êµ°npc
+					draw_bmp("picture/npc2.bmp",4,2,1,1) ;//ç»˜åˆ¶å½©è›‹npc
 	                if(direction==1){
     				draw_bmp("picture/player1.bmp",maze->player.position.x * 1,  maze->player.position.y * 1, 1,1.5);
 					}
@@ -1264,7 +1253,7 @@ static LONG FAR PASCAL GraphicsEventProc(HWND hwnd, UINT msg,
 					}
                     
                 	break; 
-                	//²Ëµ¥¼ü£¬Ê±¼äÍ£Ö¹Á÷¶¯£¬³öÏÖ²Ëµ¥½çÃæ 
+                	//èœå•é”®ï¼Œæ—¶é—´åœæ­¢æµåŠ¨ï¼Œå‡ºç°èœå•ç•Œé¢ 
                 case 3://start
                 	DestroyButton(buttonList[3]);
                 	DestroyButton(buttonList[4]);
@@ -1283,7 +1272,7 @@ static LONG FAR PASCAL GraphicsEventProc(HWND hwnd, UINT msg,
                 	DisplayClear();
             		draw_bmp("picture/start.bmp",0,0,17,15);
 					draw_bmp("picture/npc.bmp",8.5,6,1,1);
-					draw_bmp("picture/npc2.bmp",4,2,1,1) ;//»æÖÆ²Êµ°npc
+					draw_bmp("picture/npc2.bmp",4,2,1,1) ;//ç»˜åˆ¶å½©è›‹npc
 	                if(direction==1){
     				draw_bmp("picture/player1.bmp",maze->player.position.x * 1,  maze->player.position.y * 1, 1,1.5);
 					}
@@ -1304,7 +1293,7 @@ static LONG FAR PASCAL GraphicsEventProc(HWND hwnd, UINT msg,
                     	
 					}
 					if(scene==6){
-					buttonList[80] = CreateImageButton("picture/play.bmp", 16, 1, 1, 1, 80); //»æÖÆ½øÈë³ÌĞòÇó½â½çÃæ°´Å¥
+					buttonList[80] = CreateImageButton("picture/play.bmp", 16, 1, 1, 1, 80); //ç»˜åˆ¶è¿›å…¥ç¨‹åºæ±‚è§£ç•Œé¢æŒ‰é’®
 					DisplayClear();  
                     draw_bmp("picture/background.bmp",0,0,17,15);
                     draw_bmp("picture/rock.bmp",15.0,4.0,1,1);
@@ -1342,7 +1331,7 @@ static LONG FAR PASCAL GraphicsEventProc(HWND hwnd, UINT msg,
                     ButtonChoice=1;
 						
 					}
-					buttonList[2] = CreateImageButton("picture/setting.bmp", 16, 0, 1, 1, 2); //»æÖÆÔİÍ£°´Å¥ 
+					buttonList[2] = CreateImageButton("picture/setting.bmp", 16, 0, 1, 1, 2); //ç»˜åˆ¶æš‚åœæŒ‰é’® 
                 	break;
                 case 4://?
                 	inmenu=1;
@@ -1380,18 +1369,18 @@ static LONG FAR PASCAL GraphicsEventProc(HWND hwnd, UINT msg,
 					buttonList[2] = CreateImageButton("picture/exitbutton.bmp", 15, 0, 2, 1, 2); 
 					break;
 				case 7://exit
-					freeMaze(maze);//ÊÍ·ÅµØÍ¼ÔªËØ 
-                    free_solution_list(&solution_list);//ÊÍ·ÅÁ´±í
+					freeMaze(maze);//é‡Šæ”¾åœ°å›¾å…ƒç´  
+                    free_solution_list(&solution_list);//é‡Šæ”¾é“¾è¡¨
 					ExitGraphics();
 					break;
 				case 8://yes
 					ButtonChoice=2;	
 					DestroyButton(buttonList[8]);
 					DisplayClear();
-					randomOrManualChoose(); //Ìø×ª½çÃæ3£ºËæ»úÉú³ÉorµØÍ¼Ñ¡Ôñ  
-	                scene=51; //¶¨Òå³¡¾°51        
+					randomOrManualChoose(); //è·³è½¬ç•Œé¢3ï¼šéšæœºç”Ÿæˆoråœ°å›¾é€‰æ‹©  
+	                scene=51; //å®šä¹‰åœºæ™¯51        
 	                 
-					DestroyButton(buttonList[8]);//Ïú»Ù8°´Å¥ 
+					DestroyButton(buttonList[8]);//é”€æ¯8æŒ‰é’® 
 	                break;
 				case 9://hard
 					DisplayClear();
@@ -1435,12 +1424,12 @@ static LONG FAR PASCAL GraphicsEventProc(HWND hwnd, UINT msg,
                     direction=1;
                 	draw_scene_edit_maze();
                 	break;
-                case 13 ://Í¨¹Ø»òËÀÍöºóµÄ·µ»Ø°´Å¥
+                case 13 ://é€šå…³æˆ–æ­»äº¡åçš„è¿”å›æŒ‰é’®
 					 DestroyButton(buttonList[13]);
 					 DisplayClear();
 					 DrawInitialSurface();
 					 break;
-                case 20 :  //µØÍ¼±à¼­½çÃæ°´ÏÂÈ·¶¨°´Å¥
+                case 20 :  //åœ°å›¾ç¼–è¾‘ç•Œé¢æŒ‰ä¸‹ç¡®å®šæŒ‰é’®
                         {
                     TCHAR bufferX[256], bufferY[256], bufferElement[256];
                     int x, y;
@@ -1470,7 +1459,7 @@ static LONG FAR PASCAL GraphicsEventProc(HWND hwnd, UINT msg,
                   	break;
                     }
 
-                case 21://°´ÏÂ¿ªÊ¼ÓÎÏ·°´Å¥
+                case 21://æŒ‰ä¸‹å¼€å§‹æ¸¸æˆæŒ‰é’®
                     DestroyButton(buttonList[2]);
                     DestroyButton(buttonList[20]);
                     DestroyButton(buttonList[21]);
@@ -1483,11 +1472,11 @@ static LONG FAR PASCAL GraphicsEventProc(HWND hwnd, UINT msg,
                     scene=6;
                     ButtonChoice=1;
                     draw_scene_mazegame();
-                    buttonList[2] = CreateImageButton("picture/setting.bmp", 16, 0, 1, 1, 2); //»æÖÆÔİÍ£°´Å¥ 
-                    buttonList[80] = CreateImageButton("picture/play.bmp", 16, 1, 1, 1, 80); //»æÖÆ½øÈë³ÌĞòÇó½â½çÃæ°´Å¥ 
+                    buttonList[2] = CreateImageButton("picture/setting.bmp", 16, 0, 1, 1, 2); //ç»˜åˆ¶æš‚åœæŒ‰é’® 
+                    buttonList[80] = CreateImageButton("picture/play.bmp", 16, 1, 1, 1, 80); //ç»˜åˆ¶è¿›å…¥ç¨‹åºæ±‚è§£ç•Œé¢æŒ‰é’® 
                     break;  
       
-                case 23://°´ÏÂ±£´æ°´Å¥ 
+                case 23://æŒ‰ä¸‹ä¿å­˜æŒ‰é’® 
                    save_maze(maze, "maze.txt");
                    DestroyButton(buttonList[2]);
                    DestroyButton(buttonList[20]);
@@ -1499,9 +1488,9 @@ static LONG FAR PASCAL GraphicsEventProc(HWND hwnd, UINT msg,
                    DestroyTextBox(textboxList[3]);
                    DisplayClear(); 
                    draw_scene_edit_maze(); 
-                   draw_bmp("picture/success.bmp",15.5,5,1,1) ;//»æÖÆÒ»¸öÏÔÊ¾³É¹û±£´æµÄ¹´¹´Í¼°¸ 
+                   draw_bmp("picture/success.bmp",15.5,5,1,1) ;//ç»˜åˆ¶ä¸€ä¸ªæ˜¾ç¤ºæˆæœä¿å­˜çš„å‹¾å‹¾å›¾æ¡ˆ 
 	               break;	
-	            case 24://²¥·Å
+	            case 24://æ’­æ”¾
 	            	switch(musicmode){
 						case 0:
 							PlaySound(TEXT("picture/stage_01.wav"),NULL,SND_FILENAME | SND_ASYNC|SND_LOOP |SND_NODEFAULT);
@@ -1512,7 +1501,7 @@ static LONG FAR PASCAL GraphicsEventProc(HWND hwnd, UINT msg,
 							break;
 					}
 					break;
-				case 25://ÔİÍ£ 
+				case 25://æš‚åœ 
 					switch(musicmode){
 						case 0:
 						//	return;
@@ -1541,19 +1530,19 @@ static LONG FAR PASCAL GraphicsEventProc(HWND hwnd, UINT msg,
 					break;
 				case 40:
 					DestroyButton(buttonList[40]);
-					DisplayClear();//Ïú»Ù ÇåÆÁ
-					ButtonChoice=1;//¿ÉÒÆ¶¯ÈËÎï 
-                    scene=2;//scene2Îªnpc½çÃæ
+					DisplayClear();//é”€æ¯ æ¸…å±
+					ButtonChoice=1;//å¯ç§»åŠ¨äººç‰© 
+                    scene=2;//scene2ä¸ºnpcç•Œé¢
                     DrawNPCSurface(); 
                     break;  
                 case 80:
 				   DestroyButton(buttonList[2]);
                    DestroyButton(buttonList[80]);
-                   scene=9;//³ÌĞòÇó½â³¡¾°
-                   buttonList[81] = CreateImageButton("picture/play.bmp", 16, 1, 1, 1, 81); //¿ªÊ¼³ÌĞò×Ô¶¯Çó½â°´Å¥ 
-                   buttonList[82] = CreateImageButton("picture/stop.bmp", 16, 2, 1, 1, 82); //ÔİÍ£³ÌĞò×Ô¶¯Çó½â°´Å¥ 
-                   buttonList[83] = CreateImageButton("picture/one.bmp", 16, 3, 1, 1, 83);  //µ¥²½Ö´ĞĞ°´Å¥ 
-				   buttonList[84] = CreateImageButton("picture/exitbutton.bmp", 15, 0, 2, 1, 84); //·µ»Ø°´Å¥ 
+                   scene=9;//ç¨‹åºæ±‚è§£åœºæ™¯
+                   buttonList[81] = CreateImageButton("picture/play.bmp", 16, 1, 1, 1, 81); //å¼€å§‹ç¨‹åºè‡ªåŠ¨æ±‚è§£æŒ‰é’® 
+                   buttonList[82] = CreateImageButton("picture/stop.bmp", 16, 2, 1, 1, 82); //æš‚åœç¨‹åºè‡ªåŠ¨æ±‚è§£æŒ‰é’® 
+                   buttonList[83] = CreateImageButton("picture/one.bmp", 16, 3, 1, 1, 83);  //å•æ­¥æ‰§è¡ŒæŒ‰é’® 
+				   buttonList[84] = CreateImageButton("picture/exitbutton.bmp", 15, 0, 2, 1, 84); //è¿”å›æŒ‰é’® 
 				   break; 
 				case 81:
 				   ButtonChoice=3;
@@ -1584,8 +1573,8 @@ static LONG FAR PASCAL GraphicsEventProc(HWND hwnd, UINT msg,
                    scene=6;
                    ButtonChoice=1;
                    draw_scene_mazegame();
-                   buttonList[2] = CreateImageButton("picture/setting.bmp", 16, 0, 1, 1, 2); //»æÖÆÔİÍ£°´Å¥ 
-                   buttonList[80] = CreateImageButton("picture/play.bmp", 16, 1, 1, 1, 80); //»æÖÆ½øÈë³ÌĞòÇó½â½çÃæ°´Å¥ 
+                   buttonList[2] = CreateImageButton("picture/setting.bmp", 16, 0, 1, 1, 2); //ç»˜åˆ¶æš‚åœæŒ‰é’® 
+                   buttonList[80] = CreateImageButton("picture/play.bmp", 16, 1, 1, 1, 80); //ç»˜åˆ¶è¿›å…¥ç¨‹åºæ±‚è§£ç•Œé¢æŒ‰é’® 
                    break;				    
             }
         }
@@ -1676,7 +1665,7 @@ static LONG FAR PASCAL GraphicsEventProc(HWND hwnd, UINT msg,
             PostQuitMessage(0);
             return 0;   
         case WM_ERASEBKGND:
-            // ÕâÀï·µ»Ø0£¬ÊÇ https://docs.microsoft.com/en-us/windows/win32/winmsg/wm-erasebkgnd µÄÒªÇó
+            // è¿™é‡Œè¿”å›0ï¼Œæ˜¯ https://docs.microsoft.com/en-us/windows/win32/winmsg/wm-erasebkgnd çš„è¦æ±‚
             return 0;
         default:
             return DefWindowProc(hwnd, msg, wParam, lParam);
@@ -2517,44 +2506,42 @@ double ScaleYInches(int y)/*y coordinate from pixels to inches*/
 {
  	  return GetWindowHeight()-(double)y/GetYResolution();
 } 	 
-/* Ä§¸ÄÄÚÈİ£¬ÊµÏÖÌùÍ¼*/ 
 void draw_bmp(const char* bmp_path, double x, double y, double width, double height) {
-    // ½«Ó¢´ç×ª»»ÎªÏñËØ
     int px = PixelsX(x);
     int py = PixelsY(y);
     int pwidth = PixelsX(width);
     int pheight = PixelsY(height);
 
-    // ¼ÓÔØÎ»Í¼ÎÄ¼ş
+    
     HBITMAP hBitmap = (HBITMAP)LoadImage(NULL, bmp_path, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 
     if (hBitmap == NULL) {
-        MessageBox(NULL, "¼ÓÔØÍ¼ÏñÊ§°Ü", "´íÎó", MB_OK | MB_ICONERROR);
+        MessageBox(NULL, "åŠ è½½å›¾åƒå¤±è´¥", "é”™è¯¯", MB_OK | MB_ICONERROR);
         return;
     }
 
-    // ´´½¨Ò»¸öÓëÄ¿±êÉè±¸ÉÏÏÂÎÄ£¨osdc£©¼æÈİµÄÄÚ´æÉè±¸ÉÏÏÂÎÄ£¨memDC£©
+    
     HDC memDC = CreateCompatibleDC(osdc);
     if (memDC == NULL) {
-        MessageBox(NULL, "´´½¨¼æÈİDCÊ§°Ü", "´íÎó", MB_OK | MB_ICONERROR);
+        MessageBox(NULL, "åˆ›å»ºå…¼å®¹DCå¤±è´¥", "é”™è¯¯", MB_OK | MB_ICONERROR);
         DeleteObject(hBitmap);
         return;
     }
 
-    // ½«Î»Í¼¶ÔÏóÑ¡Ôñµ½ÄÚ´æÉè±¸ÉÏÏÂÎÄ
+    
     SelectObject(memDC, hBitmap);
 
-    // »ñÈ¡Î»Í¼ĞÅÏ¢
+    
     BITMAP bmp;
     GetObject(hBitmap, sizeof(BITMAP), &bmp);
 
-    // ÉèÖÃÍ¸Ã÷É«Îª°×É«
-    COLORREF crTransparent = RGB(255, 255, 255);  // °×É«
+    
+    COLORREF crTransparent = RGB(255, 255, 255);  // ç™½è‰²
 
-    // Ê¹ÓÃ TransparentBlt »æÖÆÎ»Í¼£¬Í¸Ã÷É«Îª°×É«
+    
     TransparentBlt(osdc, px, py, pwidth, pheight, memDC, 0, 0, bmp.bmWidth, bmp.bmHeight, crTransparent);
 
-    // ÇåÀí
+   
     DeleteDC(memDC);
     DeleteObject(hBitmap);
 }
@@ -2567,7 +2554,7 @@ void draw_bmp(const char* bmp_path, double x, double y, double width, double hei
 HWND CreateImageButton(LPCSTR filePath, double xPosInch, double yPosInch, double widthInch, double heightInch, int buttonId) {
     HWND hwndButton;
 
-    // Load the image from file path
+    
     HBITMAP hImage = (HBITMAP)LoadImage(NULL, filePath, IMAGE_BITMAP, 0, 0, LR_CREATEDIBSECTION | LR_LOADFROMFILE);
 
     if(hImage == NULL) {
@@ -2575,7 +2562,7 @@ HWND CreateImageButton(LPCSTR filePath, double xPosInch, double yPosInch, double
         return NULL;
     }
 
-    // Create a compatible memory device context
+    
     HDC hMemDC = CreateCompatibleDC(NULL);
     if(hMemDC == NULL) {
         MessageBox(consoleWindow, "Could not create memory device context!", "Error", MB_OK | MB_ICONEXCLAMATION);
@@ -2583,22 +2570,22 @@ HWND CreateImageButton(LPCSTR filePath, double xPosInch, double yPosInch, double
         return NULL;
     }
 
-    // Select the image into the memory device context
+    
     HBITMAP hOldBitmap = (HBITMAP)SelectObject(hMemDC, hImage);
 
-    // Get bitmap information
+    
     BITMAP bmp;
     GetObject(hImage, sizeof(BITMAP), &bmp);
 
-    // Create a new bitmap of the desired size
+    
     HDC hScaledMemDC = CreateCompatibleDC(NULL);
     HBITMAP hScaledImage = CreateCompatibleBitmap(hMemDC, PixelsX(widthInch), PixelsY(heightInch));
     SelectObject(hScaledMemDC, hScaledImage);
 
-    // Scale the image
+    
     StretchBlt(hScaledMemDC, 0, 0, PixelsX(widthInch), PixelsY(heightInch), hMemDC, 0, 0, bmp.bmWidth, bmp.bmHeight, SRCCOPY);
 
-    // Create the button
+    
     hwndButton = CreateWindow(
         "BUTTON",  // Predefined class; Unicode assumed 
         "",      // Button text 
@@ -2643,12 +2630,12 @@ HWND CreateTextBox(double xPosInch, double yPosInch, double widthInch, double he
         "EDIT",            // Predefined class; Unicode assumed 
         "",                // No text 
         WS_CHILD | WS_VISIBLE | ES_AUTOHSCROLL,  // Styles 
-        PixelsX(xPosInch),         // x position 
-        PixelsY(yPosInch),         // y position 
-        PixelsX(widthInch),        // TextBox width
-        PixelsY(heightInch),       // TextBox height
-        graphicsWindow,            // Parent window
-        (HMENU)textBoxId,          // TextBox ID
+        PixelsX(xPosInch),         
+        PixelsY(yPosInch),        
+        PixelsX(widthInch),        
+        PixelsY(heightInch),       
+        graphicsWindow,            
+        (HMENU)textBoxId,          
         (HINSTANCE)GetModuleHandle(NULL), 
         NULL);            // Pointer not needed.
 
@@ -2663,10 +2650,10 @@ HWND CreateTextBox(double xPosInch, double yPosInch, double widthInch, double he
 void DestroyTextBox(HWND hwndTextBox) {
     if (hwndTextBox != NULL) {
         if (!DestroyWindow(hwndTextBox)) {
-            // ´íÎó´¦Àí£ºÏú»Ù´°¿ÚÊ§°Ü
+            // é”™è¯¯å¤„ç†ï¼šé”€æ¯çª—å£å¤±è´¥
             MessageBox(NULL, "Failed to destroy text box.", "Error", MB_OK);
         } else {
-            hwndTextBox = NULL; // ´°¿ÚÒÑ±»Ïú»Ù£¬ÉèÖÃ¾ä±úÎªNULL
+            hwndTextBox = NULL; 
         }
     }
 }
