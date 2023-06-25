@@ -1,4 +1,6 @@
 # Magic-Maze
+陈建海老师班
+第七组
 2023.6.4
 基于libgraphics图形库的C大程大作业
 贡献者：北海无河 星之坏比 Pastime
