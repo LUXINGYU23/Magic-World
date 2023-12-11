@@ -1,5 +1,9 @@
-
- 
+/*
+该文件由北海无河同学魔改
+主要额外实现了自定义透明度贴图函数draw_bmp以及全自定义按钮控件函数CreateImageButton，DestroyButton
+对了还有自定义文本框函数CreateTextBox，DestroyTextBox
+由于偷懒就我就把部分场景调度逻辑整合进GraphicsEventProc函数里面咯
+*/ 
 
 
 /*
