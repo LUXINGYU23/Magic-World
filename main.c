@@ -27,6 +27,7 @@
 #include "monsters.h"
 #include "display.h"
 #include "scene.h"
+#include "wordle.h"
 #define TIMER_ID_REFRESH 0 
 #define TIMER_ID_MONSTER_MOVE 1
 
@@ -34,37 +35,38 @@
 #define TIMER_INTERVAL 10 // Set timer interval to 10 ms 
 
 
-void KeyboardEvent(int key, int event);//é”®ç›˜äº‹ä»¶å‡½æ•° 
-void TimerEvent(int timer);//æ—¶é—´äº‹ä»¶å‡½æ•° 
-Maze *maze;//å®šä¹‰è¿·å®«åœ°å›¾ç»“æž„ä½“ 
-SolutionList solution_list;//å®šä¹‰è¿·å®«è§£çš„é“¾è¡¨ç»“æž„ 
-int height,width,num_keys,num_doors;//å®šä¹‰è¿·å®«å‚æ•°å˜é‡ 
+void KeyboardEvent(int key, int event);//¼üÅÌÊÂ¼þº¯Êý 
+void TimerEvent(int timer);//Ê±¼äÊÂ¼þº¯Êý 
+Maze *maze;//¶¨ÒåÃÔ¹¬µØÍ¼½á¹¹Ìå 
+SolutionList solution_list;//¶¨ÒåÃÔ¹¬½âµÄÁ´±í½á¹¹ 
+int height,width,num_keys,num_doors;//¶¨ÒåÃÔ¹¬²ÎÊý±äÁ¿ 
 int num_mushrooms,num_coins,num_monsters;
-int scene=0; //åˆå§‹åŒ–å…¨å±€åœºæ™¯å˜é‡ 
-int mode=0; //åˆå§‹åŒ–å…¨å±€æ¨¡å¼å˜é‡ 
+int scene=0; //³õÊ¼»¯È«¾Ö³¡¾°±äÁ¿ 
+int mode=0; //³õÊ¼»¯È«¾ÖÄ£Ê½±äÁ¿ 
 int inmenu=0;
 int musicmode=1; 
-int direction=1;//åˆå§‹åŒ–å…¨å±€çŽ©å®¶æ–¹å‘ 
-void Main() //åˆå§‹åŒ–å›¾å½¢ç•Œé¢ï¼Œä»…åˆå§‹åŒ–ä¸€æ¬¡ 
+int direction=1;//³õÊ¼»¯È«¾ÖÍæ¼Ò·½Ïò 
+
+void Main() //³õÊ¼»¯Í¼ÐÎ½çÃæ£¬½ö³õÊ¼»¯Ò»´Î 
 {   
 	PlaySound (TEXT("picture/stage_01.wav"),NULL,SND_FILENAME | SND_ASYNC|SND_LOOP |SND_NODEFAULT);
-    srand(time(NULL));//è®¾ç«‹éšæœºæ•°ç§å­ 
-	maze = generate_random_maze(10,10,0,0,0,0);//åˆå§‹åŒ–è¿·å®«åœ°å›¾ 
-    SetWindowSize(17,15);//è®¾ç½®çª—å£å¤§å° 
-    InitGraphics();//åˆå§‹åŒ–å›¾å½¢ç•Œé¢ 
- // InitConsole();//åˆå§‹åŒ–æŽ§åˆ¶å°ç•Œé¢ 
+    srand(time(NULL));//ÉèÁ¢Ëæ»úÊýÖÖ×Ó 
+	maze = generate_random_maze(10,10,0,0,0,0);//³õÊ¼»¯ÃÔ¹¬µØÍ¼ 
+    SetWindowSize(17,15);//ÉèÖÃ´°¿Ú´óÐ¡ 
+    InitGraphics();//³õÊ¼»¯Í¼ÐÎ½çÃæ 
+ // InitConsole();//³õÊ¼»¯¿ØÖÆÌ¨½çÃæ 
     set_player(1,5);
-    DrawInitialSurface();//ç”»å‡ºåˆå§‹ç•Œé¢ 
-    registerKeyboardEvent(KeyboardEvent); // æ³¨å†Œé”®ç›˜å›žè°ƒå‡½æ•° 
-    startTimer(0, TIMER_INTERVAL); // å¼€å§‹ä¸€ä¸ªæ—¶é—´ 
-    registerTimerEvent(TimerEvent); // æ³¨å†Œæ—¶é—´å›žè°ƒå‡½æ•° 
+    DrawInitialSurface();//»­³ö³õÊ¼½çÃæ 
+    registerKeyboardEvent(KeyboardEvent); // ×¢²á¼üÅÌ»Øµ÷º¯Êý 
+    startTimer(0, TIMER_INTERVAL); // ¿ªÊ¼Ò»¸öÊ±¼ä 
+    registerTimerEvent(TimerEvent); // ×¢²áÊ±¼ä»Øµ÷º¯Êý 
 	
 }
 
 void KeyboardEvent(int key, int event)
 {
     if (event != KEY_DOWN) return; 
-    if(ButtonChoice==1&&scene==2){ //åœºæ™¯2ä¸‹é”®ç›˜é€»è¾‘ 
+    if(ButtonChoice==1&&scene==2){ //³¡¾°2ÏÂ¼üÅÌÂß¼­ 
     int dx=0,dy=0;
     switch (key) {
         case VK_UP:
@@ -90,6 +92,7 @@ void KeyboardEvent(int key, int event)
     draw_bmp("picture/npc.bmp",8.5,6,1,1);
     draw_bmp("picture/npc2.bmp",4,2,1,1) ; 
     draw_bmp("picture/talk.bmp",7.5,5,1,1);
+    draw_bmp("picture/player.bmp",11.4,6,1,1);
 	if(direction==1){
     	draw_bmp("picture/player1.bmp",maze->player.position.x * 1,  maze->player.position.y * 1, 1,1.5);
 	}
@@ -108,15 +111,20 @@ void KeyboardEvent(int key, int event)
 				draw_bmp("picture/word.bmp",4, 11, 10, 3);
 				ButtonChoice=2;
 				buttonList[8] = CreateImageButton("picture/yes.bmp", 14, 14, 2, 1, 8); 
-				DestroyButton(buttonList[2]);//é”€æ¯2æŒ‰é’®
+				DestroyButton(buttonList[2]);//Ïú»Ù2°´Å¥
 			}
 			if(maze->player.position.x>=3.5&&maze->player.position.x<=5.5&&maze->player.position.y>=1&&maze->player.position.y<=3) {
-               draw_scene_game_egg();
+//               draw_scene_game_egg();
+			}
+//-----------wordle³¡¾°´¥·¢µã----------------//            
+            if(maze->player.position.x>=9.5&&maze->player.position.x<=11.5&&maze->player.position.y>=5&&maze->player.position.y<=7) {
+               
+               init_wordle();
 			}
 	
 		
 	}
-	}else if(ButtonChoice==1&&scene==6){//åœºæ™¯6ä¸‹é”®ç›˜é€»è¾‘ 
+	}else if(ButtonChoice==1&&scene==6){//³¡¾°6ÏÂ¼üÅÌÂß¼­ 
 	int dx=0,dy=0;
     int isDraw_maze_with_path=0;
     int isDraw_maze_all_path=0;
@@ -138,10 +146,10 @@ void KeyboardEvent(int key, int event)
             dx=1;
             direction=2;
             break;
-        case VK_RETURN://è¾“å‡ºæœ€çŸ­è·¯å¾„æç¤º 
+        case VK_RETURN://Êä³ö×î¶ÌÂ·¾¶ÌáÊ¾ 
             isDraw_maze_with_path=1;
             break;
-        case VK_SPACE://è¾“å‡ºæ‰€æœ‰è§£ 
+        case VK_SPACE://Êä³öËùÓÐ½â 
             if(mode==3){
             isDraw_maze_all_path=1;
 			} 
@@ -163,12 +171,12 @@ void KeyboardEvent(int key, int event)
 	
 	if(isDraw_maze_all_path==1){
 		InitConsole();
-		solve_maze(maze, &solution_list); //æ±‚è§£ 
+		solve_maze(maze, &solution_list); //Çó½â 
         print_solutions(&solution_list);
-	    free_solution_list(&solution_list);//é‡Šæ”¾é“¾è¡¨
+	    free_solution_list(&solution_list);//ÊÍ·ÅÁ´±í
 	    FreeConsole();
 	}
-	if(maze->player.life==0){
+	if(maze->player.life<=0){
 		ClearDisplay();
     	DestroyButton(buttonList[2]);
     	DestroyButton(buttonList[80]);
@@ -183,7 +191,7 @@ void KeyboardEvent(int key, int event)
     DrawVictory();	
 	}  
 }
-    if(ButtonChoice==1&&scene==8){ //åœºæ™¯8ä¸‹é”®ç›˜é€»è¾‘ 
+    if(ButtonChoice==1&&scene==8){ //³¡¾°8ÏÂ¼üÅÌÂß¼­ 
     int dx=0,dy=0;
     switch (key) {
         case VK_UP:
@@ -206,7 +214,7 @@ void KeyboardEvent(int key, int event)
     move_player2(maze,dx,dy);
     ClearDisplay();
     draw_bmp("picture/start.bmp",0,0,17,15);
-   draw_bmp("picture/egg.bmp",8.5,6,1,2);//ç»˜åˆ¶å½©è›‹npc 
+   draw_bmp("picture/egg.bmp",8.5,6,1,2);//»æÖÆ²Êµ°npc 
    draw_bmp("picture/talk.bmp",7.5,5,1,1);
 	if(direction==1){
     	draw_bmp("picture/player1.bmp",maze->player.position.x * 1,  maze->player.position.y * 1, 1,1.5);
@@ -222,12 +230,12 @@ void KeyboardEvent(int key, int event)
     }
     if(key==VK_TAB){
     	if(maze->player.position.x>=7.5&&maze->player.position.x<=9.5&&maze->player.position.y>=5&&maze->player.position.y<=7) {
-				draw_bmp("picture/box.bmp",0, 11, 17, 4);//ç»˜åˆ¶å½©è›‹ å¯¹è¯ç•Œé¢ 
+				draw_bmp("picture/box.bmp",0, 11, 17, 4);//»æÖÆ²Êµ° ¶Ô»°½çÃæ 
 				draw_bmp("picture/egg1.bmp",0,11,4,4);
 				draw_bmp("picture/word1.bmp",4, 11, 10, 3);
 				ButtonChoice=2;
 				buttonList[40] = CreateImageButton("picture/yes.bmp", 14, 14, 2, 1, 40);
-				DestroyButton(buttonList[2]);//é”€æ¯2æŒ‰é’® 
+				DestroyButton(buttonList[2]);//Ïú»Ù2°´Å¥ 
 			}
 	}
 } 
@@ -239,7 +247,7 @@ int frameCount9 = 0;
 void TimerEvent(int timer)
 {
 
-	if(ButtonChoice==1&&scene==6){//åœºæ™¯6ä¸‹åˆ·æ–°é€»è¾‘ 
+	if(ButtonChoice==1&&scene==6){//³¡¾°6ÏÂË¢ÐÂÂß¼­ 
     // Move monsters less frequently
     if (frameCount6 % 200 == 0) {
     move_monsters(maze);
@@ -255,7 +263,7 @@ void TimerEvent(int timer)
 	}
     frameCount6++;
 }
-	if(ButtonChoice==3&&scene==9){//ç¨‹åºæ±‚è§£åœºæ™¯ä¸‹æ—¶é—´å›žè°ƒé€»è¾‘ 
+	if(ButtonChoice==3&&scene==9){//³ÌÐòÇó½â³¡¾°ÏÂÊ±¼ä»Øµ÷Âß¼­ 
 	if (frameCount9 % 100 == 0) {
     ClearDisplay();
     draw_scene_mazegame_with_auto_path(find_shortest_path(maze));

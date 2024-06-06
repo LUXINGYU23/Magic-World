@@ -1,16 +1,16 @@
 11 11 4
-9 8
-1 4
-8 8
-9 1
+1 3
+9 5
+3 7
+9 7
 wwwwwwwwwww
-wS KDC    w
-w  wwCww  w
-wC    TCwKw
-w  wwDw w w
-wC Cw   wKw
-wwwTDCwwwww
-w   DTTC  w
-wTwwwww   w
-wCC    K Ew
+wSCK Cw  Kw
+ww Dw DCwww
+w C T w  Cw
+w  wwwww  w
+wKwC TT   w
+w  C  DC  w
+wK   Cw   w
+w    Tww  w
+w  T Kw CEw
 wwwwwwwwwww
