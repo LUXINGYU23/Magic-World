@@ -3,7 +3,7 @@
 + 基于浙江大学上古libgraphics图形库的C大程大作业,禁止抄袭，抄袭后果自负
 + 主要对libgraphics进行了极大的功能性函数扩充，极大减少了开发压力，具体运行结果可以下载之后运行exe文件查看，非常推荐尝试！
 
-+ 贡献者：北海无河 星之坏比 Pastime
++ 贡献者：北海无河 星之坏比 Pastime super超 Axmisu
 + 音频文件太大了还搞不清楚怎么上传/(ㄒoㄒ)/~~
 + 但是除了没有声音之外不影响正常编译以及游戏
 + 如有疑问欢迎咨询QQ 2042236012
@@ -13,10 +13,10 @@
 + 按照互评修改意见补充了部分界面提示说明
 + 2023.6.13
 + 修复了手动求解胜利界面按钮未销毁的bug
-+ 2023.7.11
-+ 想起来更新一下，感谢大噶们的努力，老师和同学们最终给我们的打分是99.8，四舍五入一下就是100啦！
++ 2024.6.6
++ 作为数据结构与算法分析课程作业优化了地图生成和求解算法，优化了数据储存结构，新增猜词WORDLE游戏部分，屏蔽了彩蛋部分
++ 编译时请不要使用Libgraphics、game、include文件夹内部（这是老的内容），新内容使用由于时间匆忙工程文件管理比较混乱，但是就是在主文件夹内部分
 + 运行截图
-+ ![image](https://github.com/LUXINGYU23/Magic-Maze/assets/125804060/89cd8812-710a-4b68-b33a-051b61cd0507)
 + ![image](https://github.com/LUXINGYU23/Magic-Maze/assets/125804060/97412565-09c3-4808-a477-a5c14f9530c3)
 + ![image](https://github.com/LUXINGYU23/Magic-Maze/assets/125804060/b1aa6178-0612-4004-a68b-7f3bf59c4dad)
 + ![image](https://github.com/LUXINGYU23/Magic-Maze/assets/125804060/991b8874-9ec0-4d10-a5a7-77956b2385dd)
